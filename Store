@@ -1,0 +1,10 @@
+Create table store (id INTEGER PRIMARY KEY, item TEXT, quantity INTEGER, brand TEXT, size INTEGER, color TEXT);
+INSERT into store VALUES (1, "Sandal",2, "Soma",8,"Black");
+INSERT into store VALUES (2, "Sandal",1, "Soma",9,"Black");
+INSERT into store VALUES (3, "Tennis Shoe",5, "Sketcher",7,"White");
+INSERT into store VALUES (4, "Tennis Shoe",10, "Adidas",6 ,"Red");
+INSERT into store VALUES (5, "Sandal",4, "Soma",8 ,"Black");
+
+Select size, item, color, brand,sum(quantity) FROM store group by size;
+
+Select sum(quantity) from store
