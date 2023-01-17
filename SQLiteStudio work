@@ -1,0 +1,30 @@
+-- return all data from customers database
+SELECT * FROM BIT_DB.customers;
+
+-- clean messy data to get a count of number of orders in Jan
+SELECT COUNT(orderID) FROM BIT_DB.JanSales
+WHERE length(orderID) = 6;
+
+-- from the above, how many of those orders were for an iPhone?
+SELECT COUNT(orderID) FROM BIT_DB.JanSales
+WHERE length(orderID) = 6 AND Product = 'iPhone';
+
+-- select the customer account numbers for all the orders placed in Feb
+SELECT distinct acctnum FROM BIT_DB.customers cust
+INNER JOIN BIT_DB.FebSales Feb
+ON cust.order_ID = Feb.orderid
+WHERE length(orderid) = 6;
+
+-- which product was the cheapest sold in Jan and waht was the price?
+SELECT distinct product, price FROM BIT_DB.JanSales
+GROUP BY product, price
+ORDER BY price ASC LIMIT 1; 
+
+-- what is the total revenue for each product sold in Jan?
+SELECT distinct product, sum(quantity)*price as revenue FROM BIT_DB.JanSales
+GROUP BY product;
+
+
+
+
+
